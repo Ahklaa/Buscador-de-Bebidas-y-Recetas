@@ -1,8 +1,8 @@
+import { useMemo } from "react"
 import { NavLink,useLocation } from "react-router-dom"
 export default function Header() {
-  const location = useLocation()
-  console.log(location.pathname);
-  
+  const {pathname} = useLocation()
+  const isHome =  useMemo(() => pathname === "/" ,[pathname])
   return (
     <header className="bg-slate-900">
         <div className="mx-auto container px-5 py-10">
@@ -13,14 +13,43 @@ export default function Header() {
                 <nav className="flex gap-5">
                     <NavLink 
                     to="/"
-                    className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold" }
+                    className={({isActive})=> isActive ? "uppercase text-red-500 font-bold" : "uppercase text-white font-bold" }
                     >Inicio</NavLink>
                     <NavLink 
                     to="/favoritos"
-                    className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold"}
+                    className={({isActive})=> isActive ? "uppercase text-red-500 font-bold" : "uppercase text-white font-bold"}
                     >Favoritos</NavLink>
                 </nav>
             </div>
+
+            {isHome && (
+                <form className="md:w-1/2 2xl:w-1/3 space-y-6 my-32 bg-red-400 p-10 rounded-lg shadow  ">
+                    <div className="space-y-4">
+                      <label 
+                      htmlFor="ingredient" 
+                      className="block text-white uppercase font-extrabold text-lg">Nombre o Ingredientes</label>
+                      <input 
+                      type="text" 
+                      name="ingredient"
+                      id="ingredient" 
+                      placeholder="Nombre del Ingrediente. Ej: Tequila, Vodka, Café"
+                      className="p-3 w-full rounded-lg focus:outline-none bg-white" />
+                    </div>
+                    <div className="space-y-4">
+                      <label 
+                      htmlFor="category" 
+                      className="block text-white uppercase font-extrabold text-lg">Categoria</label>
+                      <select name="category" id="category" 
+                      className="p-3 w-full rounded-lg focus:outline-none bg-white"> 
+                        <option value="">--- Seleccione Categoria ---</option>
+                      </select>
+                    </div>
+                    <input 
+                    type="submit" 
+                    value="Buscar Recetas"
+                    className="text-white uppercase rounded-lg w-full font-extrabold bg-red-500 hover:bg-red-600 p-2"  />
+                </form>
+            )}
         </div>
     </header>
   )
