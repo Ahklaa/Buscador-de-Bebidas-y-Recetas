@@ -1,5 +1,8 @@
-import { Link, NavLink } from "react-router-dom"
+import { NavLink,useLocation } from "react-router-dom"
 export default function Header() {
+  const location = useLocation()
+  console.log(location.pathname);
+  
   return (
     <header className="bg-slate-900">
         <div className="mx-auto container px-5 py-10">
@@ -13,7 +16,7 @@ export default function Header() {
                     className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold" }
                     >Inicio</NavLink>
                     <NavLink 
-                    to="/Favoritos"
+                    to="/favoritos"
                     className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold"}
                     >Favoritos</NavLink>
                 </nav>
