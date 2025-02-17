@@ -8,14 +8,14 @@ export default function Header() {
                     <img src="/logo.svg "className="w-22" alt="logo vino" />
                 </div>
                 <nav className="flex gap-5">
-                    <Link 
+                    <NavLink 
                     to="/"
-                    className="uppercase text-white font-bold"
-                    >Inicio</Link>
-                    <Link 
+                    className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold" }
+                    >Inicio</NavLink>
+                    <NavLink 
                     to="/Favoritos"
-                    className="uppercase text-white font-bold"
-                    >Favoritos</Link>
+                    className={({isActive})=> isActive ? "uppercase text-orange-500 font-bold" : "uppercase text-white font-bold"}
+                    >Favoritos</NavLink>
                 </nav>
             </div>
         </div>
