@@ -4,7 +4,7 @@ export default function Header() {
   const {pathname} = useLocation()
   const isHome =  useMemo(() => pathname === "/" ,[pathname])
   return (
-    <header className="bg-slate-900">
+    <header className={isHome ? "headerImage" : "bg-slate-800"}>
         <div className="mx-auto container px-5 py-10">
             <div className="flex justify-between items-center">
                 <div>
@@ -23,7 +23,7 @@ export default function Header() {
             </div>
 
             {isHome && (
-                <form className="md:w-1/2 2xl:w-1/3 space-y-6 my-32 bg-red-400 p-10 rounded-lg shadow  ">
+                <form className="md:w-1/2 2xl:w-1/3 space-y-6 my-32 bg-red-500 p-10 rounded-lg shadow  ">
                     <div className="space-y-4">
                       <label 
                       htmlFor="ingredient" 
@@ -47,7 +47,7 @@ export default function Header() {
                     <input 
                     type="submit" 
                     value="Buscar Recetas"
-                    className="text-white uppercase rounded-lg w-full font-extrabold bg-red-500 hover:bg-red-600 p-2"  />
+                    className="text-white uppercase rounded-lg w-full font-extrabold bg-red-600 hover:bg-red-700 p-2"  />
                 </form>
             )}
         </div>
