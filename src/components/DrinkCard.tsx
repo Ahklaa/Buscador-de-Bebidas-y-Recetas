@@ -1,0 +1,19 @@
+import { Drink } from "../types" 
+type DrinkCardProps = {
+    drink : Drink
+}
+export default function DrinkCard({drink} : DrinkCardProps) {
+  return (
+    <div className="shadow-lg border-yellow-900 border ">
+        <div className="overflow-hidden ">
+            <img src={drink.strDrinkThumb} alt={`Imagen de ${drink.strDrink}`}
+            className="hover:scale-125 hover:rotate-12 transition-transform" />
+        </div>
+        <div className="p-5">
+            <h2 className="text-2xl truncate font-black">{drink.strDrink}</h2>
+            <button className="p-3 text-white bg-yellow-900 hover:bg-yellow-950 mt-5 w-full font-bold">Ver Receta</button>
+        </div>
+
+    </div>
+  )
+}
