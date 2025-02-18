@@ -5,9 +5,11 @@ export default function Header() {
   const {pathname} = useLocation()
   const isHome =  useMemo(() => pathname === "/" ,[pathname])
   const fetchCategories = useAppStore((state) => state.fetchCategories)
+  const categories =  useAppStore((state) => state.categories)
     useEffect(()=> {
       fetchCategories()
     },[])
+
   return (
     <header className={isHome ? "headerImage" : "bg-slate-800"}>
         <div className="mx-auto container px-5 py-10">
@@ -47,6 +49,9 @@ export default function Header() {
                       <select name="category" id="category" 
                       className="p-3 w-full rounded-lg focus:outline-none bg-white"> 
                         <option value="">--- Seleccione Categoria ---</option>
+                        {categories.drinks.map(category => (
+                          <option value={category.strCategory} key={category.strCategory}>{category.strCategory}</option>
+                        ))}
                       </select>
                     </div>
                     <input 
