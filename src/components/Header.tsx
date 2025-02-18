@@ -1,8 +1,13 @@
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { NavLink,useLocation } from "react-router-dom"
+import { useAppStore } from "../stores/useAppStore"
 export default function Header() {
   const {pathname} = useLocation()
   const isHome =  useMemo(() => pathname === "/" ,[pathname])
+  const fetchCategories = useAppStore((state) => state.fetchCategories)
+    useEffect(()=> {
+      fetchCategories()
+    },[])
   return (
     <header className={isHome ? "headerImage" : "bg-slate-800"}>
         <div className="mx-auto container px-5 py-10">
@@ -13,17 +18,17 @@ export default function Header() {
                 <nav className="flex gap-5">
                     <NavLink 
                     to="/"
-                    className={({isActive})=> isActive ? "uppercase text-red-500 font-bold" : "uppercase text-white font-bold" }
+                    className={({isActive})=> isActive ? "uppercase text-yellow-800 font-bold" : "uppercase text-white font-bold" }
                     >Inicio</NavLink>
                     <NavLink 
                     to="/favoritos"
-                    className={({isActive})=> isActive ? "uppercase text-red-500 font-bold" : "uppercase text-white font-bold"}
+                    className={({isActive})=> isActive ? "uppercase text-yellow-800 font-bold" : "uppercase text-white font-bold"}
                     >Favoritos</NavLink>
                 </nav>
             </div>
 
             {isHome && (
-                <form className="md:w-1/2 2xl:w-1/3 space-y-6 my-32 bg-red-500 p-10 rounded-lg shadow  ">
+                <form className="md:w-1/2 2xl:w-1/3 space-y-6 my-32 bg-yellow-800 p-10 rounded-lg shadow  ">
                     <div className="space-y-4">
                       <label 
                       htmlFor="ingredient" 
@@ -47,7 +52,7 @@ export default function Header() {
                     <input 
                     type="submit" 
                     value="Buscar Recetas"
-                    className="text-white uppercase rounded-lg w-full font-extrabold bg-red-600 hover:bg-red-700 p-2"  />
+                    className="text-white uppercase rounded-lg w-full font-extrabold bg-yellow-900 hover:bg-yellow-950 p-2"  />
                 </form>
             )}
         </div>
