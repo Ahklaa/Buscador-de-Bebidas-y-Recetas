@@ -38,11 +38,11 @@ export default function Header() {
                 <nav className="flex gap-5">
                     <NavLink 
                     to="/"
-                    className={({isActive})=> isActive ? "uppercase text-yellow-800 font-bold" : "uppercase text-white font-bold" }
+                    className={({isActive})=> isActive ? "uppercase text-yellow-500 font-bold" : "uppercase text-white font-bold" }
                     >Inicio</NavLink>
                     <NavLink 
                     to="/favoritos"
-                    className={({isActive})=> isActive ? "uppercase text-yellow-800 font-bold" : "uppercase text-white font-bold"}
+                    className={({isActive})=> isActive ? "uppercase text-yellow-500 font-bold" : "uppercase text-white font-bold"}
                     >Favoritos</NavLink>
                 </nav>
             </div>
