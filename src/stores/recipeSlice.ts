@@ -1,14 +1,18 @@
 import { StateCreator } from "zustand"
 import { getCategories, getRecipes } from "../services/RecipesServices"
-import { Categories, SearchFilter } from "../types"
+import { Categories, Drinks, SearchFilter } from "../types"
 
 export type RecipeSlicesType = {
-    categories : Categories
+    categories : Categories,
+    drinks : Drinks,
     fetchCategories: () => Promise<void>
     searchRecipes: (searchFilter : SearchFilter) => Promise<void>
 }
 export const createRecipesSlices : StateCreator<RecipeSlicesType> = (set) => ({
     categories : {
+        drinks : []
+    },
+    drinks : {
         drinks : []
     },
     fetchCategories : async () => {
@@ -18,6 +22,9 @@ export const createRecipesSlices : StateCreator<RecipeSlicesType> = (set) => ({
         }))
     },
     searchRecipes : async (filters) => {
-        getRecipes(filters)
+        const drinks = await getRecipes(filters)
+        set(() => ({
+            drinks
+        }))
     }   
 })
