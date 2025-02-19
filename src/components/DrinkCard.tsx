@@ -13,7 +13,7 @@ export default function DrinkCard({drink} : DrinkCardProps) {
         </div>
         <div className="p-5">
             <h2 className="text-2xl truncate font-black">{drink.strDrink}</h2>
-            <button className="p-3 text-white bg-yellow-900 hover:bg-yellow-950 mt-5 w-full font-bold"
+            <button className="p-3 text-white bg-yellow-600 hover:bg-yellow-700 mt-5 w-full font-bold"
                 onClick={() =>  selectRecipe(drink.idDrink)}
             >Ver Receta</button>
         </div>
