@@ -21,7 +21,7 @@ export const createFavoriteSlice : StateCreator<FavoriteSliceType & RecipeSlices
                 text : "Se ha eliminado el elemento de favoritos",
                 error : false
             })
-
+            
         }else{
             set((state) => ({
                 favorites : [...state.favorites, recipe]

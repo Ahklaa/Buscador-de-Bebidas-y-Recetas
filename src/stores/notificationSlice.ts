@@ -1,4 +1,3 @@
-import { set } from "zod";
 import { StateCreator } from "zustand";
 import { FavoriteSliceType } from "./favoriteSlice";
 
@@ -10,7 +9,8 @@ export type Notification = {
 
 export type NotificationSliceType = {
     notification : Notification,
-    showNotification : (payload : Omit<Notification, 'show'>) => void
+    showNotification : (payload : Omit<Notification, 'show'>) => void,
+    hiddeNotification : () => void
 }
 
 export const createNotificationSlice : StateCreator<NotificationSliceType & FavoriteSliceType, [] , [], NotificationSliceType> = (set,get) => ({
@@ -26,6 +26,19 @@ export const createNotificationSlice : StateCreator<NotificationSliceType & Favo
                 text : payload.text,
                 error : payload.error,
                 show : true
+            }
+        })
+        setTimeout(() => {
+            get().hiddeNotification()
+        },5000)
+
+    },
+    hiddeNotification : () =>{
+        set({
+            notification : {
+                text : "",
+                error : false,
+                show : false,
             }
         })
     }
